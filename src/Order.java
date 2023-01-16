@@ -72,4 +72,8 @@ public class Order {
         return wholeOrder();
     }
 
+    public int orderTotalCost(){
+        return (getAmountOfBurgers()*5 + getAmountOfSandwiches()*4 + getAmountOfFries()*5 + getAmountOfShakes()*6 + getAmountOfIceCreams()*3);
+    }
+
 }

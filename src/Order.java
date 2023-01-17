@@ -97,5 +97,4 @@ public class Order {
     public int getCost(){
         return cost;
     }
-
 }

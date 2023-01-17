@@ -18,10 +18,4 @@ public class OrderList{
     public void addNothingToMenuItem(){
         Order.menuItem += "";
     }
-
-
-
-
-
-
 }

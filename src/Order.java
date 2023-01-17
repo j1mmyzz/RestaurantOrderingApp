@@ -93,7 +93,6 @@ public class Order {
         return (cost);
     }
 
-
     public int getCost(){
         return cost;
     }

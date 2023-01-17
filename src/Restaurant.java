@@ -6,15 +6,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
-import java.util.*;
 
+/**
+ * @author Jimmy Zheng
+ * @Version: 6.0
+ * Creates an interactive Restaurant GUI window
+ */
 public class Restaurant extends JFrame{
+
     Order customerOrder = new Order();
     //window2
     static JFrame cartWindow = new JFrame("Cart");
     String[] customerName = new String[1];
     String[] customerCardInfo = new String[1];
-
+    /**
+     * Creates frame
+     */
     public static void main(String[] args){
         new Restaurant();
     }
@@ -22,27 +29,24 @@ public class Restaurant extends JFrame{
     JTextField order;
     JButton addItem, Cart, back;
 
+    /**
+     * first frame
+     * @version: 6.0
+     */
     Restaurant(){
-
-
         //text-field
         order = new JTextField();
         order.setBounds(400,170,300,30);
-
-
         //labels
         menu = new JLabel("<html><br>Burger - 5<br><br>Sandwich - 4<br><br>Fries - 5<br><br>Shake - 6<br><br>Ice Cream - 3<br><br><br><html>");
         menu.setBounds(100,150,200,300);
         menu.setFont(new Font("Courier New", Font.PLAIN, 20));
-
         menumenu = new JLabel("<html><u>Menu</u></html>");
         menumenu.setBounds(130,10,200,300);
         menumenu.setFont(new Font("Courier New", Font.PLAIN, 24));
-
         directions = new JLabel("Enter what item you want:");
         directions.setFont(new Font("Courier New", Font.PLAIN, 20));
         directions.setBounds(402,135,500,50);
-
         cardOnly = new JLabel("Card Only");
         cardOnly.setFont(new Font("Courier New", Font.BOLD, 20));
         cardOnly.setBounds(350,30,300,30);
@@ -113,10 +117,6 @@ public class Restaurant extends JFrame{
         frame.add(nameTextField);
         cardInfoTextField.setBounds(400,335,300,30);
         frame.add(cardInfoTextField);
-
-
-
-
         Cart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -134,9 +134,6 @@ public class Restaurant extends JFrame{
         cartWindow.setLayout(null);
         cartWindow.setVisible(false);
 
-
-
-
         //back button
         back = new JButton("Back");
         back.setBounds(355,525,120,50);
@@ -151,8 +148,10 @@ public class Restaurant extends JFrame{
     }
 
     private static String[] censored(String[] y){
-        for(int j = 0;j<y.length-4;j++){
+        int j = 0;
+        while(j<y.length-4){
             y[j]="X";
+            j++;
         }
         return y;
     }
@@ -164,18 +163,15 @@ public class Restaurant extends JFrame{
         name2.setBounds(325,220,500,40);
         name2.setFont(new Font("Courier New", Font.PLAIN, 20));
 
-
         String[] cardInfoArray = new String[customerCardInfo[0].length()];
         for(int i = 0; i<cardInfoArray.length;i++){
             cardInfoArray[i]=customerCardInfo[0].substring(i,i+1);
         }
         StringBuilder builder = new StringBuilder();
-        for(String s : censored(cardInfoArray)) {
+        for(String s : censored(cardInfoArray)) { //enhanced for loop
             builder.append(s);
         }
         String str = builder.toString();
-
-
 
         cardInformation2 = new JLabel("Card Number: " + str);
         cardInformation2.setBounds(325,320,500,50);
@@ -214,10 +210,7 @@ public class Restaurant extends JFrame{
                 cartWindow.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Thank You For Your Purchase");
                 cartWindow.dispatchEvent(new WindowEvent(cartWindow, WindowEvent.WINDOW_CLOSING));
-
             }
         });
-
-
     }
 }

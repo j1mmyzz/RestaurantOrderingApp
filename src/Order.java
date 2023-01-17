@@ -1,5 +1,11 @@
+/**
+ * @Author: Jimmy Zheng
+ * @3.0
+ * Keeps track of order and customer information
+ */
 public class Order {
-    private String menuItem;
+    private int cost;
+    public static String menuItem;
     private int amountOfBurgers;
     private int amountOfSandwiches;
     private int amountOfFries;
@@ -13,7 +19,6 @@ public class Order {
     public Order(){
         menuItem = "";
     }
-
     public void setAmountOfBurgers(){
         amountOfBurgers++;
         isBurger = true;
@@ -71,9 +76,26 @@ public class Order {
     public String toString(){
         return wholeOrder();
     }
-
+    /**
+     * @return cost of order
+     */
     public int orderTotalCost(){
-        return (getAmountOfBurgers()*5 + getAmountOfSandwiches()*4 + getAmountOfFries()*5 + getAmountOfShakes()*6 + getAmountOfIceCreams()*3);
+        int[] costArray = new int[5];
+        costArray[0] = getAmountOfBurgers()*5;
+        costArray[1] = getAmountOfSandwiches()*4;
+        costArray[2] = getAmountOfFries()*5;
+        costArray[3] = getAmountOfShakes()*6;
+        costArray[4] = getAmountOfIceCreams()*3;
+        int cost = 0;
+        for(int i = 0; i<costArray.length; i++){
+            cost+= costArray[i];
+        }
+        return (cost);
+    }
+
+
+    public int getCost(){
+        return cost;
     }
 
 }
